@@ -27,7 +27,7 @@ export default class App extends Component<Props> {
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
-       
+
       </View>
     );
   }
