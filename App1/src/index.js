@@ -10,9 +10,12 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView
+  ScrollView,
+  FlatList,
+
 } from 'react-native';
  import Card from './card';
+ import VH from './header'
  import cardData from './card/mockData';
 
 const instructions = Platform.select({
@@ -25,8 +28,7 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
-
-     let cardsComp = cardData.map((card)=>{
+    /* let cardsComp = cardData.map((card)=>{
        return (
          <Card
           key={card.key}
@@ -37,26 +39,35 @@ export default class App extends Component<Props> {
           }}
          />
        )
-     })
+     })*/
     return (
       <View style={[styles.container]}>
-      <View style={styles.header}>
-      <Text >
-        Home
-      </Text>
-      </View>
+<VH/>
       <View style={styles.scrollView}>
-      <ScrollView    >
- // contentContainerStyle={styles.scrollView}
-         {cardsComp}
+        <FlatList  data={cardData}
+         keyExtractor={(item)=>item.content}
+          renderItem={({item})=>{
+          return (
+            <Card
+             {...{
+               soruce:item.soruce,
+               content:item.content,
+               time:item.time
+             }}
+            />
+          )
+        }} />
 
-      </ScrollView>
-</View>
+      </View>
       </View>
     );
   }
 }
+/*  <ScrollView    >
+// contentContainerStyle={styles.scrollView}
+     {cardsComp}
 
+  </ScrollView>*/
 const styles = StyleSheet.create({
   container: {
      display:'flex',
@@ -64,20 +75,13 @@ const styles = StyleSheet.create({
      // justifyContent:'center',
 
   },
-  header:{
-    paddingTop:20,
-    height:64,
-    alignItems:'center',
-    justifyContent:'center',
-    backgroundColor:'red',
 
-  },
   title:{
     fontSize:17,
     fontWeight:'600'
   },
   scrollView:{
-    height:300,
+   // height:300,
 
 
   }
