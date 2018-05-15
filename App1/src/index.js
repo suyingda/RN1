@@ -13,6 +13,8 @@ import {
   ScrollView
 } from 'react-native';
  import Card from './card';
+ import cardData from './card/mockData';
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
     'Cmd+D or shake for dev menu',
@@ -23,6 +25,19 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   render() {
+
+     let cardsComp = cardData.map((card)=>{
+       return (
+         <Card
+          key={card.key}
+          {...{
+            soruce:card.soruce,
+            content:card.content,
+            time:card.time
+          }}
+         />
+       )
+     })
     return (
       <View style={[styles.container]}>
       <View style={styles.header}>
@@ -31,14 +46,10 @@ export default class App extends Component<Props> {
       </Text>
       </View>
       <View style={styles.scrollView}>
-      <ScrollView  >
-      // contentContainerStyle={styles.scrollView}
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
+      <ScrollView    >
+ // contentContainerStyle={styles.scrollView}
+         {cardsComp}
+
       </ScrollView>
 </View>
       </View>
@@ -67,7 +78,7 @@ const styles = StyleSheet.create({
   },
   scrollView:{
     height:300,
- 
+
 
   }
 
