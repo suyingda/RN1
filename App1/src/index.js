@@ -64,7 +64,7 @@ const Navigator = TabNavigator({
     }
 },{
     tabBarComponent:TabBarBottom,
-    tabBarPostition:'bottom',
+    tabBarPosition:'bottom',
     swipeEnabled:false,
     animationEnabled:false,
     tabBarOptions:{
