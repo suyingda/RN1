@@ -24,13 +24,17 @@ export default class Header extends Component {
         home
       </Text>
       </View>
-      <Icon name="search" size={22} color="#ccc"/>
-        <TextInput
-        placeholder="search"
-          style={styles.input}
-          autoCorrect={false}
-          underlineColorAndroid="transparent"
-        />
+      <View style={styles.Icon}>
+
+
+            <TextInput
+            placeholder="search"
+              style={styles.input}
+              autoCorrect={false}
+              underlineColorAndroid="transparent"
+            />
+      </View>
+
         </View>
 
       </View>
@@ -70,6 +74,7 @@ backgroundColor:'#E83A59'
         paddingHorizontal:10,
 
 
-    }
+    },
+  // <Icon name="search" size={22} color="#ccc"/>
 
 });
